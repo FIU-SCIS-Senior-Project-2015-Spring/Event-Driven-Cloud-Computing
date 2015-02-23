@@ -7,140 +7,122 @@ var s3 = new aws.S3({apiVersion: '2006-03-01'});
 exports.consolidateAudit = function(event, context) {
    console.log("run");
    var consolidatedBuffer = new Buffer(595);
-   s3.listObjects({Bucket:'senior-projects-cory'},
-      function(err, data) {
+   var consolidatedString;
+   var listLength;
+   var objlist;
+
+function runFunction(list, bucket){
+    console.log("ran me");
+    console.log("list: " + list + " bucket: " + bucket);
+}
+
+    function getList(callback){
+    var bucket = 'senior-projects-cory';
+    var err;
+    var list;
+        s3.listObjects({Bucket:'senior-projects-cory'}, function lister(err, data) {
         if (err) {
            console.log('error listing objects from bucket ' + bucket);
            context.done('error',err);
         }
         else {
-            
-            var i = 0;
-            var write = 0;
-            var currentFileString;
-            var currentStringLen;
-            for(i; i < data.Contents.length; i++){
-            var currentFilename = data.Contents[i].Key;
-            console.log('filename: ', currentFilename);
-            
-            
-            
-            s3.getObject({Bucket:'senior-projects-cory', Key: data.Contents[i].Key}, 
-            function gotObject(err, data) {
+            console.log("list success. get objects from list now, data: ", data.Contents);
+            listLength = data.Contents.length;
+            console.log("listlen = " , listLength);
+        }
+      });
+    }
+    
+getList(objlist, runFunction);
+
+/*
+
+//SIMPLE CALLBACK EXAMPLE, CURRENTLY WORKS!
+
+function runMe(list, bucket){
+    console.log("ran me");
+    console.log("list: " + list + " bucket: " + bucket);
+}
+
+function getList(something, random){
+    var list = [123,456,789];
+    var bucket = 'senior-projects-cory';
+    
+    if(typeof random === "function"){
+        random(list, bucket);
+        
+    }
+}
+var variable;
+getList(variable, runMe);
+
+//END SIMPLE CALLBACK EXAMPLE
+
+
+
+    objlist = s3.listObjects({Bucket:'senior-projects-cory'},
+      function getList(err, data) {
+        if (err) {
+           console.log('error listing objects from bucket ' + bucket);
+           context.done('error',err);
+        }
+        else {
+            console.log("list success. get objects from list now  data: ", data);
+            listLength = data.Contents.length;
+            console.log("listlen = " , listLength);
+            return data;
+        }
+      }
+   );
+
+   
+   s3.getObject({Bucket:'senior-projects-cory', Key: objlist.Contents[i].Key}, 
+            function getObj(err, data) {
             if (err) console.log(err, err.stack); // an error occurred
             else     // successful response
                      currentFileString = data.Body.toString();
                      currentStringLen = currentFileString.length;
                      console.log(currentFileString + "\n" + currentStringLen);
-                     if(currentFilename != 'consolidated.txt' && write < 1){
+                     if(currentFilename != 'consolidated.txt' && currentFilename != 'consolidated.json'){
                      console.log("not .json... \n");
                      consolidatedBuffer.write(currentFileString, 0, currentStringLen, 'utf8');
-                     write += 1;
                      console.log("data from " + currentFilename + " written to consolidated.txt!");
             }
             
             });
-            
-            
-            
+   
+   
+    function gotList(listofobjs){
+            var i = 0;
+            var currentFileString;
+            var currentStringLen;
+            for(i; i < listofobjs.length; i++){
+            var currentFilename = listofobjs.Contents[i].Key;
+            console.log('filename: ', currentFilename);
+               getObj(listofobjs, i);
            }//END FOR
-           s3.upload({Bucket: 'senior-projects-cory', Key: 'consolidated.txt', Body: consolidatedBuffer}, function(err, data) {
-            console.log(err, data);
+   }
+   
+           function gotFiles(){
+           consolidatedString = consolidatedBuffer.toString();
+           
+           s3.upload({Bucket: 'senior-projects-cory', Key: 'consolidated.txt', Body: consolidatedString}, function(err, data) {
+               if(err)     console.log('error occurred! error: ', err);
+               else        console.log('no error, data: ', data);
+                           console.log('contents of file: ', consolidatedString);
             });
+}
 
-        }
-      }
-   );
+function consolidateFiles(){
+    getList();
+    console.log("getlist run");
+    gotList(objlist);
+    console.log("gotlist run");
+    gotFiles();
 
-           var currentFile = fs.readFileSync('','utf8');
-           console.log ("print txt! : " + currentFile);
+}
 
-
-function processFile(callback){
-    //fs.readFile(currentFile, function fileRead(err, fileContents){
-       // var contents = new Buffer(currentFile.size);
-        
-        
-  }
-
-    
-
-
-//not working yet
-/*
-s3.getObject({Bucket:'senior-projects-cory', Key: 'helloworld.txt'}, function gotObject(err, data) {
-  if (err) console.log(err, err.stack); // an error occurred
-  else     console.log(data);           // successful response
-});
+consolidateFiles();
 */
-
 context.done(null, "done consolidating");
 };//end
-
-
-
-
-
-/*
-
-*/
-/*
-console.log("outside");
-
-
-var getObjParams = {
-  Bucket: 'senior-projects-cory/',
-};
-var getFileIntoBuf = s3.getObject(getObjParams, function(err, data) {
-  if (err) console.log(err, err.stack); // an error occurred
-  else     console.log(data);           // successful response
-});
-
-
-/*
-var putObjParams = {
-  Bucket: 'senior-projects-cory/',
-};
-var placeBufIntoFile = s3.putObject(putObjParams, function(err, data) {
-  if (err) console.log(err, err.stack); // an error occurred
-  else     console.log(data);           // successful response
-});
-*/
-
-
-
-
-/*
-var writeConsolidated = fs.appendFile('consolidated/consolidated.json', "test", function (err) {
-  if (err) return console.log(err);
-  console.log('Files Consolidated');
-});
-*/
-
-/*
-var readErr = new Error();
-var writeErr = new Error();
-var consolidatedFile = new Buffer(100000);
-
-var currFile;
-console.log(listFiles.toString());
-
-
-*/
-/*
-var file = 'senior-projects-cory/mac-example.json';
-var readCurrent = fs.readFile(file, 'utf8', function (err, data) {
-  if (err) {
-    return console.log(err);
-  }
-  console.log(data);
-});
-//for(file in listFiles){
-	currFile = readCurrent(file, 'utf8', null);
-    console.log("current file: \n", JSON.stringify(currFile));
-	//writeConsolidated();
-//}
-*/
-
-
-//context.done(null, "done");
