@@ -1,0 +1,40 @@
+<html>
+<head>
+	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.10.min.js"></script>
+</head> 
+<body>
+	TEST
+
+<script type= "text/javascript">
+// Function to fetch static audit file from S3 bucket
+//var AWS = require('aws-sdk');	
+
+AWS.config.update(
+	{
+		accessKeyId: "",
+		secretAccessKey: "",
+	}
+);
+
+var s3 = new AWS.S3();
+s3.getObject(
+	{ Bucket: "senior-projects-alex", Key: "org1.json"},
+    function(err, data) {
+   		if (err) {
+	  		console.log(err, err.stack); // an error ocurred
+	  		alert("Failed retrieve the objet " + err);
+	  	}
+	  	else {
+	  		console.log(data); // request succeeded
+	  		var result = JSON.parse(data.Body);
+	  		//console.log(data.Body);
+	  		console.log(result.machine3);
+	  		//alert(result.machine1);
+	  		//alert(data.Body);
+	  	}
+	}
+);
+</script>
+
+</body>
+</html>
