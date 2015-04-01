@@ -25,3 +25,7 @@ are a couple different places to check the run results:
 -TriggerNewPubNubAlertLambda sends a PubNub message to the publish key with the alert information depending on
  the put file and the old file in the _consolidated.json. You can also see "success" log in the CloudWatch alerts to 
  indicate that the message was send to PubNub.
+-TriggerNewPubNubAlertAndConfigLambda has the same functionality as the code above but also includes instructions
+ that can read the _config.json file in the bucket to search the audit files for certain statistic names, 
+ set the thresholds that will be alerted on, and each has an 'activated' field to turn on or off alerts for that 
+ statistic.
