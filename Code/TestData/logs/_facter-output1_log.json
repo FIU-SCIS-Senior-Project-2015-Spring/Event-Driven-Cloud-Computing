@@ -1,0 +1,122 @@
+Webroot Scan Log (Mac)
+Log saved at 2015-Apr-03 14:53:54
+
+Mac OS X Version 10.10.2
+Scan Started: 2015-Apr-03 13:36:41
+Files Scanned: 1156541
+Malicious Files: 0
+Duration: 26m 27s
+
+Previous Scan Results
+
+
+Current Session System Statistics
+
+CPU: 30%
+--- End of Scan Log ---
+
+2015-Apr-03 14:05:20	Scan Started: 2015-Apr-03 14:05:20
+2015-Apr-03 14:05:20	Scanning '/Users/jason/Library/Application Support/Google/Chrome/Default/Local Storage/https_plus.google.com_0.localstorage-journal'
+2015-Apr-03 14:05:20	Sweep Type: REALTIME SHIELD
+2015-Apr-03 14:05:20	Windows Threat Mode: Only Windows Extensions
+2015-Apr-03 14:05:20	Scan Finished: [started on 2015-Apr-03 14:05:20]
+2015-Apr-03 14:05:20	Files Scanned: 2
+2015-Apr-03 14:05:20	Malicious Files: 2
+2015-Apr-03 14:05:20	[quarantine] test1.txt was quarantined!
+2015-Apr-03 14:05:20	[quarantine] test2.txt was quarantined!
+2015-Apr-03 14:05:20	Duration: 1s
+2015-Apr-03 14:05:30	Scan Started: 2015-Apr-03 14:05:30
+2015-Apr-03 14:05:30	Scanning '/Users/jason/Library/Application Support/Google/Chrome/Default/Cookies-journal'
+2015-Apr-03 14:05:30	Sweep Type: REALTIME SHIELD
+2015-Apr-03 14:05:30	Windows Threat Mode: Only Windows Extensions
+2015-Apr-03 14:05:30	Scan Finished: [started on 2015-Apr-03 14:05:30]
+2015-Apr-03 14:05:30	Files Scanned: 4
+2015-Apr-03 14:05:30	Malicious Files: 0
+2015-Apr-03 14:05:30	Duration: 1s
+2015-Apr-03 14:05:40	Scan Started: 2015-Apr-03 14:05:40
+2015-Apr-03 14:05:40	Scanning '/private/var/log/accountpolicy.log'
+2015-Apr-03 14:05:40	Sweep Type: REALTIME SHIELD
+2015-Apr-03 14:05:40	Windows Threat Mode: Only Windows Extensions
+2015-Apr-03 14:05:40	Scan Finished: [started on 2015-Apr-03 14:05:40]
+2015-Apr-03 14:05:40	Files Scanned: 5
+2015-Apr-03 14:05:40	Malicious Files: 0
+2015-Apr-03 14:05:40	Duration: 1s
+2015-Apr-03 14:06:10	Scan Started: 2015-Apr-03 14:06:10
+2015-Apr-03 14:06:10	Scanning '/private/var/tmp/lastChk.txt'
+2015-Apr-03 14:06:10	Sweep Type: REALTIME SHIELD
+2015-Apr-03 14:06:10	Windows Threat Mode: Only Windows Extensions
+2015-Apr-03 14:06:10	Scan Finished: [started on 2015-Apr-03 14:06:10]
+2015-Apr-03 14:06:10	Files Scanned: 1
+2015-Apr-03 14:06:10	Malicious Files: 0
+2015-Apr-03 14:06:10	Duration: 1s
+2015-Apr-03 14:06:30	Scan Started: 2015-Apr-03 14:06:30
+2015-Apr-03 14:06:30	Scanning '/Users/jason/Library/Application Support/Google/Chrome/Default/Cookies-journal'
+2015-Apr-03 14:06:30	Sweep Type: REALTIME SHIELD
+2015-Apr-03 14:06:30	Windows Threat Mode: Only Windows Extensions
+2015-Apr-03 14:06:30	Scan Finished: [started on 2015-Apr-03 14:06:30]
+2015-Apr-03 14:06:30	Files Scanned: 1
+2015-Apr-03 14:06:30	Malicious Files: 0
+2015-Apr-03 14:06:30	Duration: 1s
+2015-Apr-03 14:06:40	Scan Started: 2015-Apr-03 14:06:40
+2015-Apr-03 14:06:40	Scanning '/private/var/tmp/lastChk.txt'
+2015-Apr-03 14:06:40	Sweep Type: REALTIME SHIELD
+2015-Apr-03 14:06:40	Windows Threat Mode: Only Windows Extensions
+2015-Apr-03 14:06:40	Scan Finished: [started on 2015-Apr-03 14:06:40]
+2015-Apr-03 14:06:40	Files Scanned: 1
+2015-Apr-03 14:06:40	Malicious Files: 0
+2015-Apr-03 14:06:40	Duration: 1s
+2015-Apr-03 14:06:50	Scan Started: 2015-Apr-03 14:06:50
+2015-Apr-03 14:06:50	Scanning '/Users/jason/Library/Caches/com.spotify.client/Data/dd/dd6c6dee1a84b114430dc609fadfd451c87c857f.file'
+2015-Apr-03 14:06:50	Sweep Type: REALTIME SHIELD
+2015-Apr-03 14:06:50	Windows Threat Mode: Only Windows Extensions
+2015-Apr-03 14:06:50	Scan Finished: [started on 2015-Apr-03 14:06:50]
+2015-Apr-03 14:06:50	Files Scanned: 27
+2015-Apr-03 14:06:50	Malicious Files: 0
+2015-Apr-03 14:06:50	Duration: 1s
+2015-Apr-03 14:07:00	Scan Started: 2015-Apr-03 14:07:00
+2015-Apr-03 14:07:00	Scanning '/Users/jason/Library/Application Support/BitTorrent/resume.dat.new'
+2015-Apr-03 14:07:00	Sweep Type: REALTIME SHIELD
+2015-Apr-03 14:07:00	Windows Threat Mode: Only Windows Extensions
+2015-Apr-03 14:07:00	Scan Finished: [started on 2015-Apr-03 14:07:00]
+2015-Apr-03 14:07:00	Files Scanned: 0
+2015-Apr-03 14:07:00	Malicious Files: 0
+2015-Apr-03 14:07:00	Duration: 1s
+2015-Apr-03 14:07:10	Scan Started: 2015-Apr-03 14:07:10
+2015-Apr-03 14:07:10	Scanning '/Users/jason/Library/Preferences/com.bittorrent.BitTorrent.plist.Y7RgBkB'
+2015-Apr-03 14:07:10	Sweep Type: REALTIME SHIELD
+2015-Apr-03 14:07:10	Windows Threat Mode: Only Windows Extensions
+2015-Apr-03 14:07:10	Scan Finished: [started on 2015-Apr-03 14:07:10]
+2015-Apr-03 14:07:10	Files Scanned: 1
+2015-Apr-03 14:07:10	Malicious Files: 0
+2015-Apr-03 14:07:10	Duration: 1s
+2015-Apr-03 14:07:30	Result from CURL: 0	HTTP result: 200	URL: i1.ma.webrootcloudav.com/arm.asp	Local File: ExecuteCurlRequestString
+2015-Apr-03 14:07:30	Scan Started: 2015-Apr-03 14:07:30
+2015-Apr-03 14:07:30	Scanning '/Users/jason/.wsalock'
+2015-Apr-03 14:07:30	Sweep Type: REALTIME SHIELD
+2015-Apr-03 14:07:30	Windows Threat Mode: Only Windows Extensions
+2015-Apr-03 14:07:30	Scan Finished: [started on 2015-Apr-03 14:07:30]
+2015-Apr-03 14:07:30	Files Scanned: 1
+2015-Apr-03 14:07:30	Malicious Files: 3
+2015-Apr-03 14:07:30	[quarantine] testfile1.txt was quarantined!
+2015-Apr-03 14:07:30	[quarantine] testfile2.txt was quarantined!
+2015-Apr-03 14:07:30	[quarantine] testfile3.txt was quarantined!
+2015-Apr-03 14:07:30	Duration: 1s
+2015-Apr-03 14:07:31	Result from CURL: 0	HTTP result: 200	URL: i1.ma.webrootcloudav.com/arm.asp	Local File: ExecuteCurlRequestString
+2015-Apr-03 14:07:31	Result from CURL: 0	HTTP result: 200	URL: i1.ma.webrootcloudav.com/arm.asp	Local File: ExecuteCurlRequestString
+2015-Apr-03 14:07:38	Result from CURL: 0	HTTP result: 200	URL: http://anywhere.webrootcloudav.com/zerol/pkgosxsb3.dmg	Local File: /Library/Application Support/Webroot/wfmacosx3.dmg.part
+2015-Apr-03 14:07:47	Scan Started: 2015-Apr-03 14:07:47
+2015-Apr-03 14:07:47	Scanning '/Users/jason/Library/Application Support/Google/Chrome/Default/Cookies-journal'
+2015-Apr-03 14:07:47	Sweep Type: REALTIME SHIELD
+2015-Apr-03 14:07:47	Windows Threat Mode: Only Windows Extensions
+2015-Apr-03 14:07:47	Scan Finished: [started on 2015-Apr-03 14:07:47]
+2015-Apr-03 14:07:47	Files Scanned: 5
+2015-Apr-03 14:07:47	Malicious Files: 0
+2015-Apr-03 14:07:47	Duration: 1s
+2015-Apr-03 14:12:12	Result from CURL: 0	HTTP result: 200	URL: i1.ma.webrootcloudav.com/arm.asp	Local File: ExecuteCurlRequestString
+2015-Apr-03 14:12:13	Result from CURL: 0	HTTP result: 200	URL: i1.ma.webrootcloudav.com/arm.asp	Local File: ExecuteCurlRequestString
+2015-Apr-03 14:12:13	Result from CURL: 0	HTTP result: 200	URL: i1.ma.webrootcloudav.com/arm.asp	Local File: ExecuteCurlRequestString
+2015-Apr-03 14:39:42	Result from CURL: 0	HTTP result: 200	URL: i1.ma.webrootcloudav.com/arm.asp	Local File: ExecuteCurlRequestString
+2015-Apr-03 14:39:43	Result from CURL: 0	HTTP result: 200	URL: i1.ma.webrootcloudav.com/arm.asp	Local File: ExecuteCurlRequestString
+2015-Apr-03 14:39:44	Result from CURL: 0	HTTP result: 200	URL: i1.ma.webrootcloudav.com/arm.asp	Local File: ExecuteCurlRequestString
+2015-Apr-03 14:39:53	Result from CURL: 0	HTTP result: 200	URL: http://anywhere.webrootcloudav.com/zerol/pkgmacdefs.def	Local File: /Library/Application Support/Webroot/macdefs_tmp.wdf
+

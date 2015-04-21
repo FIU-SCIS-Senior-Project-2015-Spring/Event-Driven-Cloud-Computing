@@ -1,0 +1,42 @@
+{
+"alerts":
+{
+"hostnm":
+	{
+	  "varname": "sp_local_host_name"
+	},
+"antivirus":
+	{
+	  "search_string": "quarantine",
+	  "activated": "on"
+	},
+"firewall":
+	{
+	  "varname": "firewall",
+	  "v" : "off",
+	  "activated" : "on"
+	},
+"harddisk":
+	{
+	  "varname": "disk1",
+	  "v" : "82",
+	  "activated": "on"
+	},
+"battery":
+	{
+	  "varname": "battery_cycles",
+	  "varname0": "battery_health",
+	  "varname1": "current_charge",
+	  "varname2": "max_charge",
+	  "v" : "10",
+	  "activated": "on"
+	},
+"pubnubMsg":
+	{
+	  "pubchannel": "admin_console123",
+	  "pubKey": "pub-c-e26172e9-4d10-4181-ace4-0ba3072afc48",
+	  "subKey": "sub-c-d714f18e-d262-11e4-9f3d-0619f8945a4f",
+	  "activated": "on"
+	}
+}
+}
