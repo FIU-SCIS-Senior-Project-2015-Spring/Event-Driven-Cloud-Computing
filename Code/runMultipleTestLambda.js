@@ -1,13 +1,3 @@
-//Uploaded to S3 and tested as a Lambda Function.
-//Code designed for testing mass upload.
-//Trigger On Antivirus, Harddisk, Battery and Firewall Threshold.
-//Sends alert message to PubNub after alerts are collected.
-//Each alert will have the hostname information preceding it.
-//Gets configuration data from _config.json to allow editing of alerts.
-//After triggering for alerts, consolidate all audit files in bucket.
-//@Author Cory McAn
-
-
 exports.runMultipleTest = function(event, context) {
     var AWS = require('aws-sdk');
     AWS.config.region = 'us-east-1';
@@ -111,25 +101,23 @@ exports.runMultipleTest = function(event, context) {
             var messageCount = 0;
             var messagesSent = 0;
             var loggedAlerts = false;
+            var lastFile = false;
 
             //read each file in the bucket to gather trigger information and consolidate
             var readObjs = function (index) {
                 if (index == fileListLen) {
                     console.log("Done reading files. totalBytes = " + totalBytes);
                     if (!alerted) {
-                        logAlerts();
+                            logAlerts();
                     } else {
                         console.log("Not logging for " + srcKey);
                     }
                     consolidatedString = "{\n" + consolidatedBuffer.toString().substr(0, totalBytes).trim() + "\n}";
                     if (srcKey === currentFilename && srcKey != '_consolidated.json' && srcKey != '_config.json' && checkLog == -1) {
                         //consolidation for MultiPartUpload. Only Consolidate on last file.
+                        lastFile = true;
                         consolidatedResult = consolidatedString;
-                        s3.upload({
-                            Bucket: bucket,
-                            Key: '_consolidated.json',
-                            Body: consolidatedResult
-                        }, uploaded);
+                        setTimeout(upload, 1000);
                     }
                 } else {
                     currentFilename = data.Contents[index].Key;
@@ -185,6 +173,14 @@ exports.runMultipleTest = function(event, context) {
                 }
             };
             readObjs(0);
+        }
+
+        function upload(){
+            s3.upload({
+                Bucket: bucket,
+                Key: '_consolidated.json',
+                Body: consolidatedResult
+            }, uploaded);
         }
 
         //confirm successful upload of consolidated file
@@ -302,7 +298,7 @@ exports.runMultipleTest = function(event, context) {
                     messagesSent += 1;
                     console.log("SUCCESS!", e);
                     //end execution of alerting when all messages have been sent
-                    if (messageCount === messagesSent && loggedAlerts) {
+                    if (messageCount === messagesSent && loggedAlerts && !lastFile && !up) {
                         context.succeed("All messages sent! Execution complete");
                     }
                 },
@@ -337,7 +333,7 @@ exports.runMultipleTest = function(event, context) {
                     var noAlert = "No Harddisk Alert. "
                     logOutput += noAlert;
                     console.log(noAlert);
-                    publish("hostname: " + hostName + ": " + noAlert + " old: " + oldDiskStatus + " new: " + newDiskStatus);
+                    publish("hostname: " + hostName + ": " + noAlert + " old: " + oldDiskStatus + "% new: " + newDiskStatus + "%. ");
                 }
 
                 //FirewallStatus Alerts
@@ -396,7 +392,7 @@ exports.runMultipleTest = function(event, context) {
                         var noAlert = "No Battery Level Alert. ";
                         logOutput += noAlert;
                         console.log(noAlert);
-                        publish("hostname: " + hostName + ": " + noAlert + " old: " + oldBatteryStatus + " new: " + srcBatteryStatus);
+                        publish("hostname: " + hostName + ": " + noAlert + " old: " + oldBatteryStatus + "% new: " + srcBatteryStatus + "%. ");
                     }
                 }
                 loggedAlerts = true;
