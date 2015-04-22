@@ -117,7 +117,7 @@ exports.runMultipleTest = function(event, context) {
                         //consolidation for MultiPartUpload. Only Consolidate on last file.
                         lastFile = true;
                         consolidatedResult = consolidatedString;
-                        setTimeout(upload, 1000);
+                        setTimeout(upload, 6000);
                     }
                 } else {
                     currentFilename = data.Contents[index].Key;
@@ -298,7 +298,7 @@ exports.runMultipleTest = function(event, context) {
                     messagesSent += 1;
                     console.log("SUCCESS!", e);
                     //end execution of alerting when all messages have been sent
-                    if (messageCount === messagesSent && loggedAlerts && !lastFile && !up) {
+                    if (messageCount === messagesSent && loggedAlerts && !lastFile) {
                         context.succeed("All messages sent! Execution complete");
                     }
                 },
