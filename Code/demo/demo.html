@@ -1,0 +1,302 @@
+<!doctype html>
+<!--
+ This page was designed to showcase the multipleRunTester
+ Lambda Function that lives in the Amazon Web Services Cloud.
+ @Author Cory McAn, Created for Jason Dettbarn of Addigy, Senior Project 2015
+ -->
+<html>
+<head>
+    <title>Event Driven Cloud Computing</title>
+    <link
+            href=http://fonts.googleapis.com/css?family=Nunito|Amaranth|Ubuntu
+            rel=stylesheet
+            type=text/css>
+    <meta http-equiv=Content-Type content=text/html;charset=utf-8>
+    <meta name=viewport content=width=320,height=480,user-scalable=0>
+    <meta name=apple-mobile-web-app-capable content=yes>
+    <style>
+        a, a:hover, a:active, a:focus, body, button, input {
+            outline: 0;
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 18px;
+            font-family: 'Amaranth', arial, serif;
+            text-shadow: rgba(0,0,0,0.1) 0 1px 1px;
+            color: #444;
+        }
+        /*a {
+            text-decoration: underline;
+        }*/
+        a:hover {
+            text-decoration: none;
+            color: #09f;
+        }
+        #chat-display {
+            z-index: 100;
+            position: absolute;
+            top: 140px;
+            left: 0;
+            width: 100%;
+            height: 790px;
+            overflow: auto;
+            border-top: 1px solid #fff;
+            background-image: url('bg.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .chat-item {
+            padding: 10px;
+            border-bottom: 1px solid #fff;
+            background-color: #f2f2f2;
+            background-color: rgba(240,240,240,0.5);
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -ms-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+        .template { display: auto }
+
+        #links-bar {
+            position: absolute;
+            z-index: 200;
+            width: 100%;
+            height: 139px;
+            top: 0px;
+            font-family: Arial;
+            color: #ffffff;
+            text-align: right;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        #event {
+            display: inline-block;
+            height: 139px;
+            width: 609px;
+            background-image: url('title.png');
+        }
+
+        #metrics {
+            display: inline-block;
+            background-image: url('metrics.png');
+            height: 139px;
+            width: 152px;
+        }
+        #metrics:hover {
+            display: inline-block;
+            background-image: url('metrics2.png');
+        }
+
+        #code {
+            display: inline-block;
+            background-image: url('code.png');
+            height: 139px;
+            width: 113px;
+        }
+        #code:hover {
+            display: inline-block;
+            background-image: url('codes2.png');
+        }
+
+        #docs {
+            display: inline-block;
+            background-image: url('doc.png');
+            height: 139px;
+            width: 185px;
+         }
+        #docs:hover {
+            display: inline-block;
+            background-image: url('docs2.png');
+        }
+
+        #vids {
+            display: inline-block;
+            background-image: url('videos.png');
+            height: 139px;
+            width: 142px;
+        }
+        #vids:hover {
+            display: inline-block;
+            background-image: url('videoss2.png');
+        }
+
+        #config {
+            display: inline-block;
+            background-image: url('config.png');
+            height: 139px;
+            width: 131px;
+        }
+        #config:hover {
+            display: inline-block;
+            background-image: url('configs2.png');
+        }
+
+        #linked {
+            display: inline-block;
+            background-image: url('linkedin.png');
+            height: 139px;
+            width: 155px;
+        }
+        #linked:hover {
+            display: inline-block;
+            background-image: url('linkedins2.png');
+        }
+
+        #padding {
+            width: 60px;
+            height: 139px;
+        }
+
+        #bottom-bar {
+            position: absolute;
+            padding-top: 10px;
+            z-index: 300;
+            width: 100%;
+            top: 930px;
+            height: 24px;
+            border-bottom: 1px solid #aaa;
+            font-family: arial, serif;
+            color: #666;
+            text-align: center;
+            background-color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 19px;
+            overflow: hidden;
+        }
+        ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: inline;
+        }
+        li{
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+
+
+<div id=links-bar>
+    <div align="left">
+<ul>
+    <li><div id=event></div></li>
+    <li><a href="https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions"><div id=metrics></div></a></li>
+    <li><a href="https://github.com/FIU-SCIS-Senior-Project-2015-Spring/Event-Driven-Cloud-Computing/tree/master/Code"><div id=code>
+        </div></a></li>
+
+    <li><a href="https://github.com/FIU-SCIS-Senior-Project-2015-Spring/Event-Driven-Cloud-Computing/tree/master/Documents"><div id=docs>
+    </div></a></li>
+
+    <li><a href="https://github.com/FIU-SCIS-Senior-Project-2015-Spring/Event-Driven-Cloud-Computing/tree/master/Videos"><div id=vids>
+        </div></a></li>
+
+    <li><a href="https://github.com/FIU-SCIS-Senior-Project-2015-Spring/Event-Driven-Cloud-Computing/blob/master/Code/TestData/_config.json"><div id=config></div></a></li>
+
+    <li><a href="https://www.linkedin.com/in/corymcan"><div id=linked></div></a></li>
+
+</ul></div>
+</div>
+
+<div id=chat-display><div></div></div>
+
+<div id=list></div>
+
+<div id=pubnub></div>
+
+<div id=bottom-bar>Designed and coded by Cory McAn for Jason Dettbarn of Addigy. Graphics by
+    <a href = "http://mackydesigns.com">Macky Designs</a>. Senior Project 2015</div>
+<script src=http://cdn.pubnub.com/pubnub-3.1.min.js></script>
+<script>
+
+    (function(){
+        var subKey = 'sub-c-d714f18e-d262-11e4-9f3d-0619f8945a4f';
+        var p             = PUBNUB.init({
+            channel       : 'admin_console123',
+            subscribe_key : subKey
+        });
+
+                var   top_bar       = p.$('top-bar')
+                ,   chat_display  = p.$('chat-display')
+                ,   last_received = 0
+                ,   safe_rx       = /[<>]/g;
+
+        function new_chat(message) {
+
+            var chat_line = p.create('div');
+            var cory = message.search("Cory");
+            var jason = message.search("Jason");
+            var orange = message.search("Orange");
+            var ryzen = message.search("Ryzen");
+            var zetalot = message.search("Zetalot");
+            var descartes = message.search("Descartes");
+            var strife = message.search("Strife");
+            var forsen = message.search("Forsen");
+            var rdu = message.search("RDU");
+            var trump = message.search("Trump");
+            var kolento = message.search("Kolento");
+
+            var color;
+            p.attr( chat_line, 'class', 'chat-item' );
+            if(cory>=0){
+                color = '#d8f7b9';
+                p.css( chat_line, { backgroundColor : color } )
+            } else
+            if(jason>=0){
+                color = '#9cf';
+                p.css( chat_line, { backgroundColor : color } )
+            }else
+            if(orange>=0){
+                color = '#fc6';
+                p.css( chat_line, { backgroundColor : color } )
+            }else
+            if(ryzen>=0){
+                color = '#f99';
+                p.css( chat_line, { backgroundColor : color  } )
+            }else
+            if(forsen>=0){
+                color = '#ff9';
+                p.css( chat_line, { backgroundColor : color } )
+            }else
+            if(rdu>=0){
+                color = '#d3b9f7';
+                p.css( chat_line, { backgroundColor : color } )
+            }else
+            if(descartes>=0){
+                color = '#c2f7fa';
+                p.css( chat_line, { backgroundColor : color } )
+            }else
+            if(strife>=0){
+                color = '#98FB98';
+                p.css( chat_line, { backgroundColor : color } )
+            }else
+            if(trump>=0){
+                color = '#f7b9df';
+                p.css( chat_line, { backgroundColor : color } )
+            }else
+            if(kolento>=0){
+                color = '#6fc';
+                p.css( chat_line, { backgroundColor : color } )
+            }else
+            if(zetalot>=0){
+                color = '#ddd';
+                p.css( chat_line, { backgroundColor : color } )
+            }
+                chat_line.innerHTML = [
+                    message
+                ].join('');
+            chat_display.insertBefore( chat_line, chat_display.firstChild );
+        }
+        p.subscribe({
+            ssl: true,
+            subscribe_key: subKey,
+            channel  : 'admin_console123',
+            callback : new_chat
+        });
+    })();</script>
+</body>
+</html>
